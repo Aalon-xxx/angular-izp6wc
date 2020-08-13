@@ -1,0 +1,33 @@
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-custom-element@3.0.0/dist/vue-custom-element.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script> 
+<script>
+  const MyVueWebComp = {
+    props: ['msg'],
+    template:`
+    <div style="border: 3px dashed green; padding: 5px">
+      <div>
+      <el-button @click="show()"  type="danger">Button</el-button>
+      <el-dialog :visible.sync="visible" title="Hello world">
+          <p>我是vue组件，这是来自angular的值{{msg}} </p>
+      </el-dialog>
+      </div>
+  
+    </div>
+    `,
+    data() {
+      return {
+        visible : false
+      };
+    },
+    methods: {
+        show() {
+        this.visible = true;
+      }
+    }
+  };
+  Vue.customElement('my-vue-web-comp', MyVueWebComp);
+</script>
+
+<my-app>loading</my-app>
